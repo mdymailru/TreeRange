@@ -39,8 +39,9 @@ class TreeViewModel: ObservableObject {
                 treeData = []
                 self.model.reduce(self.model.input[index])
                 self.model.tree.forEachDepth { node in
+                    guard node.level != 0 else { return }
                     withAnimation(Animation.easeInOut(duration: 1)) {
-                        treeData.append(.init(value: node.value, spacing: node.level))
+                        treeData.append(.init(value: node.value, spacing: node.level - 1))
                     }
                 }
             }.store(in: &bindings)  
