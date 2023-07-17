@@ -34,6 +34,7 @@ struct Model {
                 }
                 
                 tree.addChild(chefNode)
+                tree.children.sort { $0.value < $1.value }
             }
         }
         
